@@ -8,6 +8,8 @@ import { Content } from './components/Content';
 import { api } from './services/api';
 
 import './styles/global.scss';
+import './styles/sidebar.scss';
+import './styles/content.scss';
 
 interface GenreResponseProps {
   id: number;
@@ -15,12 +17,7 @@ interface GenreResponseProps {
   title: string;
 }
 
-interface SideBarProps {
-  handleClickButton: (id: number) => void;
-  selectedGenreId: number;
-}
-
-export function App({ handleClickButton, setSelectedGenreId }: SideBarProps) {
+export function App() {
   const [selectedGenreId, setSelectedGenreId] = useState(1);
   const [selectedGenre, setSelectedGenre] = useState<GenreResponseProps>({} as GenreResponseProps);
 
@@ -36,8 +33,8 @@ export function App({ handleClickButton, setSelectedGenreId }: SideBarProps) {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'row' }}>
-      <SideBar selectedGenreId={selectedGenreId} handleClickButton={handleClickButton}/>
-      <Content selectedGenre={selectedGenre} selectedGenreId={selectedGenreId}/>
+      <SideBar selectedGenreId={selectedGenreId} handleClickButton={handleClickButton} />
+      <Content selectedGenre={selectedGenre} selectedGenreId={selectedGenreId} />
     </div>
   )
 }
